@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="assets/javascript/game.js"></script>
+    <title>The Psychic Game</title>
+</head>
+<body>
+    <h1>The Psychic Game</h1>
+    <h3 id="directions">Guess what letter I'm thinking of</h3>
+    <section>
+        <p>Wins: <span id="wins">0</span></p>
+        <p>Losses: <span id="losses">0</span></p>
+    </section>
+    <section>
+        <p>Guesses left: <span id="guessesLeft">9</span></p>
+        <p>Guesses so far: <span id="guesses"></span></p>
+    
+</body>
+</html>
+
+<!-- Computer chooses random letter
+User submits guess (must be letter, provide alert if non-letter choice, change to lower case)
+The users guesses are displayed
+User receives nine guesses that get -1 each incorrect guess
+If user guess and computer choice are equal, a win is tallied
+if they are not equal after nine guesses a loss is tallied 
+After win or loss is determined, game resets -->
