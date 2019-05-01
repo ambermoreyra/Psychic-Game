@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+  
     <title>The Psychic Game</title>
 </head>
 <body>
@@ -16,8 +16,9 @@
     </section>
     <section>
         <p>Guesses left: <span id="guessesLeft">9</span></p>
-        <p>Guesses so far: <span id="userGuess"></span></p>
-    
+        <p>Guesses so far: <span id="allGuesses">n/a</span></p>
+    </section>  
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
 
@@ -28,3 +29,7 @@ User receives nine guesses that get -1 each incorrect guess
 If user guess and computer choice are equal, a win is tallied
 if they are not equal after nine guesses a loss is tallied 
 After win or loss is determined, game resets -->
+
+<!-- computer guess generated
+up to nine user guesses commpared to computer guess
+these possible nine user guesses are displayed -->

@@ -1,42 +1,47 @@
-var computerOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var wins = 0;
 var losses = 0;
+var guessesLeft = 9;
 var directionsText = document.getElementById("directions");
 var winsText = document.getElementById("wins");
 var lossesText = document.getElementById("losses");
 var userGuessText = document.getElementById("userGuess");
 var guessesLeftText = document.getElementById("guessesLeft");
+var allGuessesText = document.getElementById("allGuesses");
+var allGuesses = [];
 
-var computerGuess = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+var computerGuess = options[Math.floor(Math.random() * options.length)];
 
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
-
-    if (userGuess === "a" || userGuess === "b" || 
-        userGuess === "c" || userGuess === "d" || 
-        userGuess === "e" || userGuess === "f" || 
-        userGuess === "g" || userGuess === "h" || 
-        userGuess === "i" || userGuess === "j" || 
-        userGuess === "k" || userGuess === "l" || 
-        userGuess === "m" || userGuess === "n" || 
-        userGuess === "o" || userGuess === "p" || 
-        userGuess === "q" || userGuess === "r" || 
-        userGuess === "s" || userGuess === "t" || 
-        userGuess === "u" || userGuess === "v" || 
-        userGuess === "w" || userGuess === "x" || 
-        userGuess === "y" || userGuess === "z") {
-            if (userGuess === computerGuess) {
-                wins++;
-            } else {
-                guessesLeft--;
-
-            }
-
-            winsText.textContent = wins;
-            lossesText.textContent = losses;
-            userGuessText.textContent = userGuess;
-
+    
+    if (options.indexOf(userGuess) > -1) {
+        if (userGuess === computerGuess) {
+            wins++;
+            guessesLeft = 9;
+            allGuesses = [];
+            computerGuess = options[Math.floor(Math.random() * options.length)];
+        } else if (guessesLeft > 1) {
+            guessesLeft--;
+            allGuesses.push(userGuess);
         } else {
-            alert("Choose a letter to play!")
+            losses++;
+            guessesLeft = 9;
+            allGuesses = [];
+            computerGuess = options[Math.floor(Math.random() * options.length)];    
         }
+    winsText.textContent = wins;
+    lossesText.textContent = losses;
+    guessesLeftText.textContent = guessesLeft;
+    allGuessesText.textContent = allGuesses;
+
+} else {
+    alert("Choose an unused letter to play!");
+    }
+
 }
+              
+         
+
+    
+
