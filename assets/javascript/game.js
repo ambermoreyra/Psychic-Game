@@ -12,31 +12,38 @@ var allGuesses = [];
 
 var computerGuess = options[Math.floor(Math.random() * options.length)];
 
+function repeat(){
+    guessesLeft = 9;
+    allGuesses = [];
+    computerGuess = options[Math.floor(Math.random() * options.length)];
+}
+
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
-    
-    if (options.indexOf(userGuess) > -1) {
+    console.log(userGuess);
+    console.log(computerGuess);
+
+if (options.indexOf(userGuess) > -1) {
+    if (allGuesses.indexOf(userGuess) === -1) {
         if (userGuess === computerGuess) {
             wins++;
-            guessesLeft = 9;
-            allGuesses = [];
-            computerGuess = options[Math.floor(Math.random() * options.length)];
+            repeat();
         } else if (guessesLeft > 1) {
             guessesLeft--;
             allGuesses.push(userGuess);
         } else {
             losses++;
-            guessesLeft = 9;
-            allGuesses = [];
-            computerGuess = options[Math.floor(Math.random() * options.length)];    
+            repeat();
         }
     winsText.textContent = wins;
     lossesText.textContent = losses;
     guessesLeftText.textContent = guessesLeft;
     allGuessesText.textContent = allGuesses;
-
+    } else {
+        alert("Choose an unused letter to continue playing!")
+    }
 } else {
-    alert("Choose an unused letter to play!");
+    alert("Choose a letter to play!");
     }
 
 }
